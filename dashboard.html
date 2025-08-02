@@ -34,7 +34,7 @@ const nameFromUrl = getQueryParam("name");
 const referralFromUrl = nameFromUrl ? nameFromUrl.toLowerCase() + "2025" : null;
 
 if (referralFromUrl) {
-  fetch(`http://127.0.0.1:4000/api/intern?referral=${encodeURIComponent(referralFromUrl)}`)
+  fetch(`https://fundraising-intern-portal-backend.onrender.com/api/intern?referral=${encodeURIComponent(referralFromUrl)}`)
 
     .then(response => {
       if (!response.ok) throw new Error("Intern not found");
