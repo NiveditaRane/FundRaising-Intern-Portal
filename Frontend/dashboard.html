@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Intern Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="dashboard-container">
+    <h1>Welcome, <span id="name">Loading...</span></h1>
+    <p>Referral Code: <strong id="referral"></strong></p>
+    <p>Total Donations: ₹<strong id="donation"></strong></p>
+    <p><a href="leaderboard.html">View Leaderboard</a></p>
+
+    <h2>Rewards</h2>
+    <ul>
+      <li class="reward_1">Stickers</li>
+      <li class="reward_2">Book</li>
+      <li class="reward_3">Sipper</li>
+    </ul>
+     <nav class="logout">
+     <a href="index.html">Logout</a>
+</nav>
+  </div>
+
+
+<script>
+function getQueryParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}
+
+const nameFromUrl = getQueryParam("name");
+const referralFromUrl = nameFromUrl ? nameFromUrl.toLowerCase() + "2025" : null;
+
+if (referralFromUrl) {
+  fetch(`http://127.0.0.1:4000/api/intern?referral=${encodeURIComponent(referralFromUrl)}`)
+
+    .then(response => {
+      if (!response.ok) throw new Error("Intern not found");
+      return response.json();
+    })
+    .then(data => {
+      document.getElementById("name").textContent = data.name;
+      document.getElementById("referral").textContent = data.referral;
+      document.getElementById("donation").textContent = data.donation;
+      console.log("Received data:", data);
+      console.log("Donation amount:", data.donation);
+
+    })
+    .catch(error => {
+      console.error(error);
+      document.getElementById("name").textContent = nameFromUrl || "Guest";
+      document.getElementById("referral").textContent = referralFromUrl || "";
+      document.getElementById("donation").textContent = "0";
+    });
+}
+
+
+</script>
+
+
+</body>
+</html>

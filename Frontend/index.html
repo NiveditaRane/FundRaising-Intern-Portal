@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Intern Portal – Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="login-container">
+    <h1>Intern Login</h1>
+    <form onsubmit="goToDashboard(event)">
+      <input type="text" placeholder="Enter your name" required />
+      <button type="submit">Login</button>
+    </form>
+    <p style="margin-top: 15px;">
+     Or go directly to <a href="dashboard.html">Dashboard</a>
+</p>
+
+
+
+  </div>
+
+  <script>
+   function goToDashboard(event) {
+  event.preventDefault();
+  const name = event.target.querySelector('input').value.trim();
+  if(name) {
+    // Pass name as URL param
+    window.location.href = `dashboard.html?name=${encodeURIComponent(name)}`;
+  }
+}
+  </script>
+</body>
+</html>
