@@ -2,33 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Intern Portal – Login</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="login-container">
+  <div class="background-overlay"></div>
+
+  <div class="login-box">
     <h1>Intern Login</h1>
     <form onsubmit="goToDashboard(event)">
       <input type="text" placeholder="Enter your name" required />
-      <button type="submit">Login</button>
+      <button type="submit" class="btn">Login</button>
     </form>
-    <p style="margin-top: 15px;">
-     Or go directly to <a href="dashboard.html">Dashboard</a>
-</p>
-
-
-
+    <p class="link-text">
+      Or go directly to <a href="leaderboard.html">leaderboard</a>
+    </p>
   </div>
 
   <script>
-   function goToDashboard(event) {
-  event.preventDefault();
-  const name = event.target.querySelector('input').value.trim();
-  if(name) {
-    // Pass name as URL param
-    window.location.href = `dashboard.html?name=${encodeURIComponent(name)}`;
-  }
-}
+    function goToDashboard(event) {
+      event.preventDefault();
+      const name = event.target.querySelector('input').value.trim();
+      if (name) {
+        window.location.href = `dashboard.html?name=${encodeURIComponent(name)}`;
+      }
+    }
   </script>
 </body>
 </html>
