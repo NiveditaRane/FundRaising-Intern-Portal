@@ -74,21 +74,6 @@ button:hover {
   text-decoration: underline;
 }
 
-/* Common page background */
-.hero-overlay {
-  background: url('bg.png') no-repeat center center fixed;
-  background-size: cover;
-  height: 100vh;
-  position: relative;
-}
-
-.hero-overlay::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 0;
-}
 
 .hero-header {
   position: absolute;
@@ -117,7 +102,7 @@ button:hover {
 .dashboard-box,
 .leaderboard-box {
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
   border-radius: 20px;
   padding: 40px;
   max-width: 600px;
